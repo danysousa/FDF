@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 15:11:23 by dsousa            #+#    #+#             */
-/*   Updated: 2013/12/19 14:07:23 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/17 16:19:21 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 static int		expose_hook(t_env *e)
 {
-	int 	fd;
+	int		fd;
 
 	fd = open(e->argv, O_RDONLY);
 	if (fd == -1)
@@ -39,14 +39,14 @@ static int		key_hook(int keycode)
 	return (0);
 }
 
-int 			main(int argc, char const *argv[])
+int				main(int argc, char const *argv[])
 {
-	t_env 	e;
+	t_env	e;
 
 	if (argc > 1)
 	{
 		e.mlx = mlx_init();
-		e.win = mlx_new_window(e.mlx, 2000, 1200, "fdf");
+		e.win = mlx_new_window(e.mlx, W_WIDTH, W_HEIGHT, "fdf");
 		e.argv = ft_strdup(argv[1]);
 		mlx_key_hook(e.win, key_hook, &e);
 		mlx_expose_hook(e.win, expose_hook, &e);

@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/26 06:14:01 by dsousa            #+#    #+#             */
-/*   Updated: 2013/12/19 14:24:29 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/17 15:58:08 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if (!s1 || !s2)
 		return (NULL);
-	r = malloc(sizeof (char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	r = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!r)
 		return (NULL);
 	i = 0;

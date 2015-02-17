@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/13 12:19:15 by dsousa            #+#    #+#             */
-/*   Updated: 2013/12/19 15:42:22 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/17 15:52:42 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static void		ligne_a(t_env *e, t_xyz *point)
 {
-	int 	d;
+	int		d;
 	int		xincr;
-	int 	x;
-	int 	y;
+	int		x;
+	int		y;
 
 	if (point->y1 > point->y2)
 		change(&point->x1, &point->x2, &point->y1, &point->y2);
@@ -38,11 +38,12 @@ static void		ligne_a(t_env *e, t_xyz *point)
 		verif_print(e, x, y);
 	}
 }
+
 static void		ligne_b(t_env *e, t_xyz *point)
 {
-	int 	d;
-	int 	yincr;
-	int 	x;
+	int		d;
+	int		yincr;
+	int		x;
 	int		y;
 
 	if (point->x1 > point->x2)

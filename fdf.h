@@ -6,39 +6,40 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/13 12:27:45 by dsousa            #+#    #+#             */
-/*   Updated: 2014/04/21 14:02:52 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/17 16:48:27 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
-# define ZOOM 50
-# define ORIGINE_X 100
+
+# define ZOOM 30
+# define ORIGINE_X 300
 # define ORIGINE_Y 600
+# define W_WIDTH 2000
+# define W_HEIGHT 1200
 
-
-
-typedef struct s_env
+typedef struct	s_env
 {
-	void	*mlx;
-	void	*win;
-	char	*argv;
+	void		*mlx;
+	void		*win;
+	char		*argv;
 }				t_env;
 
-typedef struct s_xyz
+typedef struct	s_xyz
 {
-	int		x1;
-	int		x2;
-	int		y1;
-	int		y2;
-	int		h1;
-	int		h2;
+	int			x1;
+	int			x2;
+	int			y1;
+	int			y2;
+	int			h1;
+	int			h2;
 }				t_xyz;
 
 void			ligne(t_env *e, t_xyz *point);
 void			reader(int fd, t_env *e);
 void			verif_print(t_env *e, int x, int y);
-void			change(int* x1, int* y1, int* x2, int* y2);
-int 			ft_abs(int x);
+void			change(int *x1, int *y1, int *x2, int *y2);
+int				ft_abs(int x);
 
-#endif /* FDF_H */
+#endif

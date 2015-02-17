@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/13 15:06:05 by dsousa            #+#    #+#             */
-/*   Updated: 2014/04/21 14:00:44 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/17 16:18:15 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 
 static void		last_lign(char **line1, int y, t_env *e)
 {
-	t_xyz 	point;
-	int		x;
+	t_xyz		point;
+	int			x;
 
 	if (line1[1] == '\0')
-		return;
+		return ;
 	x = 0;
 	while (line1[x] && line1[x][0] != '\n')
 	{
@@ -48,7 +48,7 @@ static void		calcul_point(t_xyz *point, char **line, int x, int y)
 
 static void		transform_point(char **line1, char **line2, int y, t_env *e)
 {
-	t_xyz 	point;
+	t_xyz	point;
 	int		x;
 	int		x2;
 
@@ -75,9 +75,9 @@ static void		transform_point(char **line1, char **line2, int y, t_env *e)
 	}
 }
 
-static int		reader_ini(int fd, char **line, char ***line1, char ***line2)
+static int		reader_init(int fd, char **line, char ***line1, char ***line2)
 {
-	int 	ret;
+	int		ret;
 
 	ret = get_next_line(fd, line);
 	if (ret >= 0)
@@ -98,15 +98,15 @@ static int		reader_ini(int fd, char **line, char ***line1, char ***line2)
 void			reader(int fd, t_env *e)
 {
 	char	*line;
-	int 	ret;
+	int		ret;
 	char	**line1;
 	char	**line2;
 	int		i;
 
 	i = 0;
-	ret = reader_ini(fd, &line, &line1, &line2);
+	ret = reader_init(fd, &line, &line1, &line2);
 	if (line1 == NULL)
-		return;
+		return ;
 	if (ret > 0)
 		transform_point(line1, line2, i++, e);
 	else
@@ -115,7 +115,7 @@ void			reader(int fd, t_env *e)
 	{
 		ret = get_next_line(fd, &line);
 		if (!ret)
-			break;
+			break ;
 		transform_point(line2, ft_strsplit(line, ' '), i++, e);
 		free(line2);
 		line2 = ft_strsplit(line, ' ');

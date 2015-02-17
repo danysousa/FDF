@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/02 15:47:38 by dsousa            #+#    #+#             */
-/*   Updated: 2013/12/16 14:58:47 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/17 15:59:02 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@
 
 static size_t	ft_strlento(char *str)
 {
-	size_t  i;
+	size_t		i;
 
 	i = 0;
-    while (str[i] != '\n' && str[i] != '\0')
+	while (str[i] != '\n' && str[i] != '\0')
 		i++;
 	return (i);
 }
 
 static char		*ft_strcpyto(char *dest, char *src)
 {
-	size_t  i;
+	size_t		i;
 
 	i = 0;
 	while (src[i] != '\n')
@@ -54,10 +54,10 @@ static int		ft_end_line(char **save, char **line)
 
 int				get_next_line(int fd, char **line)
 {
-    static char 	*save;
-    char			buff[BUF_SIZE + 1];
-    char			*ret;
-    static int		i = 1;
+	static char		*save;
+	char			buff[BUF_SIZE + 1];
+	char			*ret;
+	static int		i = 1;
 
 	if (i)
 		ret = (save) ? ft_strdup(save) : ft_strnew(BUF_SIZE);
