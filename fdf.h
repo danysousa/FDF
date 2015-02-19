@@ -6,14 +6,14 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/13 12:27:45 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/17 16:48:27 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/19 10:27:26 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# define ZOOM 30
+# define ZOOM 2
 # define ORIGINE_X 300
 # define ORIGINE_Y 600
 # define W_WIDTH 2000

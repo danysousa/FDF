@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/13 15:06:05 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/17 16:18:15 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/19 13:43:20 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "fdf.h"
 #include "libft/libft.h"
 
-static void		last_lign(char **line1, int y, t_env *e)
+static void		last_line(char **line1, int y, t_env *e)
 {
 	t_xyz		point;
 	int			x;
@@ -55,9 +55,9 @@ static void		transform_point(char **line1, char **line2, int y, t_env *e)
 	x = 0;
 	x2 = 0;
 	if (!line1)
-		last_lign(line2, y, e);
+		last_line(line2, y, e);
 	else if (!line2)
-		last_lign(line1, y, e);
+		last_line(line1, y, e);
 	while (line1[x])
 	{
 		point.x1 = ZOOM * x + ZOOM * y + ORIGINE_X;
@@ -89,6 +89,7 @@ static int		reader_init(int fd, char **line, char ***line1, char ***line2)
 	{
 		ret = get_next_line(fd, line);
 		*line2 = ft_strsplit(*line, ' ');
+		ft_putendl(*line);
 		if (*line && ret > 0)
 			free(*line);
 	}
@@ -110,16 +111,17 @@ void			reader(int fd, t_env *e)
 	if (ret > 0)
 		transform_point(line1, line2, i++, e);
 	else
-		last_lign(line1, i++, e);
+		last_line(line1, i++, e);
 	while (ret > 0)
 	{
 		ret = get_next_line(fd, &line);
 		if (!ret)
 			break ;
+		ft_putendl(line);
 		transform_point(line2, ft_strsplit(line, ' '), i++, e);
 		free(line2);
 		line2 = ft_strsplit(line, ' ');
 		free(line);
 	}
-	last_lign(line2, i, e);
+	last_line(line2, i, e);
 }

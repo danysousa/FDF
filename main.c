@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 15:11:23 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/17 16:19:21 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/19 13:47:36 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static int		expose_hook(t_env *e)
 {
 	int		fd;
 
+	ft_putendl("Yolo");
+
 	fd = open(e->argv, O_RDONLY);
 	if (fd == -1)
 	{
@@ -29,6 +31,9 @@ static int		expose_hook(t_env *e)
 		exit(0);
 	}
 	reader(fd, e);
+	close(fd);
+	ft_putnbr(fd);
+	write(1, "\n", 1);
 	return (0);
 }
 
