@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/13 15:06:05 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/19 13:43:20 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/19 16:26:48 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,23 +75,24 @@ static void		transform_point(char **line1, char **line2, int y, t_env *e)
 	}
 }
 
-static int		reader_init(int fd, char **line, char ***line1, char ***line2)
+static int		reader_init(int fd, t_env *e, char ***line1, char ***line2)
 {
 	int		ret;
+	char	*line;
 
-	ret = get_next_line(fd, line);
+	ret = read_line(fd, &line, e);
 	if (ret >= 0)
 	{
-		*line1 = ft_strsplit(*line, ' ');
-		free(*line);
+		*line1 = ft_strsplit(line, ' ');
+		free(line);
 	}
 	if (ret > 0)
 	{
-		ret = get_next_line(fd, line);
-		*line2 = ft_strsplit(*line, ' ');
-		ft_putendl(*line);
-		if (*line && ret > 0)
-			free(*line);
+		ret = read_line(fd, &line, e);
+		*line2 = ft_strsplit(line, ' ');
+		ft_putendl(line);
+		if (line && ret > 0)
+			free(line);
 	}
 	return (ret);
 }
@@ -105,7 +106,7 @@ void			reader(int fd, t_env *e)
 	int		i;
 
 	i = 0;
-	ret = reader_init(fd, &line, &line1, &line2);
+	ret = reader_init(fd, e, &line1, &line2);
 	if (line1 == NULL)
 		return ;
 	if (ret > 0)
@@ -114,7 +115,7 @@ void			reader(int fd, t_env *e)
 		last_line(line1, i++, e);
 	while (ret > 0)
 	{
-		ret = get_next_line(fd, &line);
+		ret = read_line(fd, &line, e);
 		if (!ret)
 			break ;
 		ft_putendl(line);

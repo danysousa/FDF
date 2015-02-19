@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 12:38:26 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/17 16:02:08 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/19 16:56:13 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # define BUF_SIZE 40
 
 # include <string.h>
+# include <stdlib.h>
 
 typedef struct		s_list
 {

@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 15:11:23 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/19 13:47:36 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/19 17:05:42 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ static int		expose_hook(t_env *e)
 
 	ft_putendl("Yolo");
 
+	if (e->map_created)
+		return (0);
+
 	fd = open(e->argv, O_RDONLY);
 	if (fd == -1)
 	{
@@ -33,6 +36,7 @@ static int		expose_hook(t_env *e)
 	reader(fd, e);
 	close(fd);
 	ft_putnbr(fd);
+	e->map_created = 1;
 	write(1, "\n", 1);
 	return (0);
 }
@@ -53,6 +57,8 @@ int				main(int argc, char const *argv[])
 		e.mlx = mlx_init();
 		e.win = mlx_new_window(e.mlx, W_WIDTH, W_HEIGHT, "fdf");
 		e.argv = ft_strdup(argv[1]);
+		e.map = NULL;
+		e.map_created = 0;
 		mlx_key_hook(e.win, key_hook, &e);
 		mlx_expose_hook(e.win, expose_hook, &e);
 		mlx_loop(e.mlx);

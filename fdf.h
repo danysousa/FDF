@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/13 12:27:45 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/19 10:27:26 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/19 16:55:35 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct	s_env
 	void		*mlx;
 	void		*win;
 	char		*argv;
+	char		**map;
+	int			map_created;
 }				t_env;
 
 typedef struct	s_xyz
@@ -41,5 +43,8 @@ void			reader(int fd, t_env *e);
 void			verif_print(t_env *e, int x, int y);
 void			change(int *x1, int *y1, int *x2, int *y2);
 int				ft_abs(int x);
+int				ft_tablen(char **tbl);
+char			**ft_dubtbl(char **tbl);
+int				read_line(int fd, char **line, t_env *e);
 
 #endif
