@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/18 14:14:51 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/19 17:42:27 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/20 14:55:23 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 #include <stdio.h>
 #include "fdf.h"
 #include "libft/libft.h"
+
+void			calcul_point(t_xyz *point, char **line, int x, int y)
+{
+	point->x2 = ZOOM * x + ZOOM * y + ORIGINE_X;
+	point->y2 = ORIGINE_Y - (ZOOM * x) / 3 + (ZOOM * y) / 3;
+	point->y2 -= 2 * ft_atoi(line[x]);
+}
 
 void			verif_print(t_env *e, int x, int y)
 {
@@ -40,65 +47,29 @@ int				ft_abs(int x)
 	return (x);
 }
 
-int				ft_tablen(char **tbl)
-{
-	int		i;
-
-	if (tbl == NULL)
-		return(0);
-
-	i = 0;
-	while (tbl[i])
-		i++;
-
-	return (i);
-}
-
-char			**ft_dubtbl(char **tbl)
-{
-	char			**result;
-	int				len;
-	int				i;
-
-	i = 0;
-	len = ft_tablen(tbl);
-	result = (char **)ft_memalloc(sizeof(char *) * len);
-	ft_putnbr(len);
-	while (i < len)
-	{
-		result[i] = ft_strdup(tbl[i]);
-		i++;
-	}
-	return (result);
-}
-
 int				read_line(int fd, char **line, t_env *e)
 {
 	int			ret;
 	char		**map;
-	int			i;
 
-	i = 0;
 	ret = get_next_line(fd, line);
 	if (!*line || ret <= 0)
 		return (ret);
 	if (e->map)
 	{
-		puts(*e->map);
-		map = ft_dubtbl(e->map);
-		while (e->map && e->map[i])
-			free(e->map[i++]);
-		if (e->map)
-			free(e->map);
-		e->map = ft_dubtbl(map);
-		e->map[i] = ft_strdup(*line);
-		i = 0;
-		while (map[i])
-			free(map[i++]);
-		free(map);
+		map = ft_cpytab(e->map, e->len_map + 1);
+		map[e->len_map] = NULL;
+		ft_freetab((void **)e->map);
+		e->map = ft_cpytab(map, e->len_map + 2);
+		e->map[e->len_map] = ft_strdup(*line);
+		e->map[e->len_map + 1] = NULL;
+		ft_freetab((void **)map);
+		e->len_map++;
 		return (ret);
 	}
-	e->map = (char **)ft_memalloc(sizeof(char *));
+	e->map = (char **)ft_memalloc(sizeof(char *) * 2);
 	e->map[0] = ft_strdup(*line);
+	e->map[1] = NULL;
+	e->len_map++;
 	return (ret);
 }

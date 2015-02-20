@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/13 15:06:05 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/19 16:26:48 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/20 15:07:54 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,6 @@ static void		last_line(char **line1, int y, t_env *e)
 		ligne(e, &point);
 		x++;
 	}
-}
-
-static void		calcul_point(t_xyz *point, char **line, int x, int y)
-{
-	point->x2 = ZOOM * x + ZOOM * y + ORIGINE_X;
-	point->y2 = ORIGINE_Y - (ZOOM * x) / 3 + (ZOOM * y) / 3;
-	point->y2 -= 2 * ft_atoi(line[x]);
 }
 
 static void		transform_point(char **line1, char **line2, int y, t_env *e)
@@ -90,11 +83,33 @@ static int		reader_init(int fd, t_env *e, char ***line1, char ***line2)
 	{
 		ret = read_line(fd, &line, e);
 		*line2 = ft_strsplit(line, ' ');
-		ft_putendl(line);
 		if (line && ret > 0)
 			free(line);
 	}
 	return (ret);
+}
+
+void			expose_draw(t_env *e)
+{
+	int		i;
+	int		j;
+	char	**line1;
+	char	**line2;
+
+	i = 0;
+	j = 1;
+	while (j < e->len_map)
+	{
+		line1 = ft_strsplit(e->map[i], ' ');
+		line2 = ft_strsplit(e->map[j], ' ');
+		transform_point(line1, line2, i++, e);
+		j++;
+		ft_freetab((void **)line1);
+		ft_freetab((void **)line2);
+	}
+	line1 = ft_strsplit(e->map[i], ' ');
+	ft_freetab(line1);
+	last_line(line1, i, e);
 }
 
 void			reader(int fd, t_env *e)
@@ -118,7 +133,6 @@ void			reader(int fd, t_env *e)
 		ret = read_line(fd, &line, e);
 		if (!ret)
 			break ;
-		ft_putendl(line);
 		transform_point(line2, ft_strsplit(line, ' '), i++, e);
 		free(line2);
 		line2 = ft_strsplit(line, ' ');

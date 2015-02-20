@@ -6,7 +6,7 @@
 #    By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/09/25 09:27:42 by dsousa            #+#    #+#              #
-#    Updated: 2015/02/17 15:57:28 by dsousa           ###   ########.fr        #
+#    Updated: 2015/02/20 14:05:51 by dsousa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,9 @@ SRC = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c \
 	  ft_putnbr.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c \
 	  ft_putnbr_fd.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c \
 	  ft_lstiter.c ft_lstmap.c ft_lstpushback.c ft_strcontains.c \
-	  ft_match.c ft_lstsize.c ft_lstrev.c get_next_line.c
+	  ft_match.c ft_lstsize.c ft_lstrev.c get_next_line.c \
+	  ft_tabsize.c ft_cpytab.c ft_freetab.c
+
 OBJ = ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memmove.o ft_memchr.o \
 	  ft_memcmp.o ft_strlen.o ft_strdup.o ft_strcpy.o ft_strncpy.o ft_strcat.o \
 	  ft_strncat.o ft_strlcat.o ft_strchr.o ft_strrchr.o ft_strstr.o \
@@ -39,7 +41,9 @@ OBJ = ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memmove.o ft_memchr.o \
 	  ft_putnbr.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o \
 	  ft_putnbr_fd.o ft_lstnew.o ft_lstdelone.o ft_lstdel.o ft_lstadd.o \
 	  ft_lstiter.o ft_lstmap.o ft_lstpushback.o ft_strcontains.o \
-	  ft_match.o ft_lstsize.o ft_lstrev.o get_next_line.o
+	  ft_match.o ft_lstsize.o ft_lstrev.o get_next_line.o \
+	  ft_tabsize.o ft_cpytab.o ft_freetab.o
+
 
 all: $(NAME)
 

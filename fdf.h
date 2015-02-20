@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/13 12:27:45 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/19 16:55:35 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/20 15:01:01 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct	s_env
 	void		*win;
 	char		*argv;
 	char		**map;
+	int			len_map;
 	int			map_created;
 }				t_env;
 
@@ -46,5 +47,7 @@ int				ft_abs(int x);
 int				ft_tablen(char **tbl);
 char			**ft_dubtbl(char **tbl);
 int				read_line(int fd, char **line, t_env *e);
+void			expose_draw(t_env *e);
+void			calcul_point(t_xyz *point, char **line, int x, int y);
 
 #endif

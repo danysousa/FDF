@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 12:38:26 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/19 16:56:13 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/20 14:04:27 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # define BUF_SIZE 40
 
 # include <string.h>
+# include <unistd.h>
 # include <stdlib.h>
 
 typedef struct		s_list
@@ -88,6 +89,10 @@ void				ft_lstrev(t_list **begin);
 int					ft_strcontains(char *s, char c);
 void				ft_quicksort(char **items, int left, int right);
 int					ft_match(char *s1, char *s2);
+size_t				ft_tabsize(void **tab);
+char				**ft_cpytab(char **tab, int lenth);
+int					**ft_cpytab_int(int **tab, int x, int y);
+void				ft_freetab(void **tab);
 int					get_next_line(int const fd, char **line);
 
 #endif
