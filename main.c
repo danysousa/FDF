@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 15:11:23 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/20 14:52:05 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/20 15:15:46 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static int		expose_hook(t_env *e)
 		expose_draw(e);
 		return (0);
 	}
-
 	fd = open(e->argv, O_RDONLY);
 	if (fd == -1)
 	{
